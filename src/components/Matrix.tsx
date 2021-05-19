@@ -24,24 +24,27 @@ export const Matrix = () => {
             let ctx = canvas.getContext('2d'); 
             if(ctx)
                 ctx.clearRect(0, 0, canvas.width, canvas.height);           
-            matrixItems.forEach(x=>{
+            matrixItems.forEach(x=>{                
                 if(ctx) {
                     ctx.font = "0.5rem";
                     ctx.fillStyle = "rgb(0,0,0)";
 
                     if(x.isActive){
+                        let canvas = canvasRef.current;
+                        if(canvas) {
+                            let width = canvas.width * (x.x / 100);
+                            let height = canvas.height * (x.y / 100);
+                            
+                            ctx.fillText(x.char, width, height);
+                        }
                         
-                        let width = window.innerWidth * (x.x / 100);
-                        let height = window.innerHeight * (x.y / 100);
-                        
-                        ctx.fillText(x.char, width, height);
                         
                     }
                 }
             });
         }
 
-    }, 100);
+    }, 50);
     return (
         <Canvas ref={canvasRef}>
 

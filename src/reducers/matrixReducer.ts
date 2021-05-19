@@ -9,6 +9,7 @@ const newMatrixItem = (newItem: MatrixItem) => {
     newItem.char = String.fromCharCode(getRandom(25)+65);
     newItem.frame = 15;
     newItem.speed = getRandom(5) + 2;
+    newItem.y = 0;
 }
 
 const getNextFrame = (matrixItems: MatrixItem[]) => {
@@ -19,11 +20,11 @@ const getNextFrame = (matrixItems: MatrixItem[]) => {
             
             if(x.frame <= x.counter + 1){
                 //Y값을 증가시켜야 하면 증가시켜줌
-                x.y += 1;
+                x.y += 5;
                 //최대 거리까지 갔다면
-                if(x.y <= x.dist){
+                if(x.y >= x.dist){
                     //죽임
-                    x.isActive = false;
+                    x.isActive = false;                    
                 }
                 //Y값을 증가시켰다면 Counter 초기화
                 x.counter = 0;
@@ -34,7 +35,8 @@ const getNextFrame = (matrixItems: MatrixItem[]) => {
             return;
         }
         //1/3확률(0,1,2)로 부활함. 숫자가 커질수록 부활할 확률 낮아짐
-        if(getRandom(2) === 0){           
+        
+        if(getRandom(1) === 0){           
             newMatrixItem(x);
         }        
     });    
