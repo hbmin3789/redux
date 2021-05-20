@@ -13,6 +13,7 @@ function App() {
   return (
     <Background>
       <Matrix></Matrix>
+      <Navigation></Navigation>
     </Background>
   );
 }

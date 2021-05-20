@@ -9,27 +9,37 @@ const Canvas = styled.canvas`
     height: 30rem;
 `;
 
+let handle = -10;
+
 export const Matrix = () => {
     
+    let dispatch = useDispatch();
+    let [matrixItems, setMatrixItems] = React.useState<Array<MatrixItem>>(new Array<MatrixItem>()); 
+    let canvasRef = React.useRef<HTMLCanvasElement>(null);
+
     const backgroundReducer =  useSelector((state) => {
         return (state as any).backgroundReducer;
     });
-    
 
-    let dispatch = useDispatch();
-    let [matrixItems, setMatrixItems] = React.useState<Array<MatrixItem>>(new Array<MatrixItem>());
-    for(let i = 0;i<100;i++){
-        matrixItems.push(new MatrixItem());
+    if(matrixItems.length === 0){
+        for(let i = 0;i<100;i++) matrixItems.push(new MatrixItem());
     }
-    let canvasRef = React.useRef<HTMLCanvasElement>(null);
 
-    window.setInterval(()=>{        
+    if(handle !== -10)
+        window.clearInterval(handle);
+
+
+    handle = window.setInterval(()=>{        
         dispatch(nextFrame(matrixItems));
         if(canvasRef.current){
             let canvas = canvasRef.current;
             let ctx = canvas.getContext('2d'); 
-            if(ctx)
+            if(ctx){
+                let canvas = canvasRef.current;
                 ctx.clearRect(0, 0, canvas.width, canvas.height); 
+                ctx.fillStyle = backgroundReducer.background;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
                       
             matrixItems.forEach(x=>{                
                 if(ctx) {
