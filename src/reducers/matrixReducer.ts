@@ -36,7 +36,7 @@ const getNextFrame = (matrixItems: MatrixItem[]) => {
         }
         //1/3확률(0,1,2)로 부활함. 숫자가 커질수록 부활할 확률 낮아짐
         
-        if(getRandom(1) === 0){           
+        if(getRandom(20) === 0){           
             newMatrixItem(x);
         }        
     });    

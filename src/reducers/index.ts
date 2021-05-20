@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import matrixReducer from './matrixReducer';
+import backgroundReducer from './backgroundReducer';
 
 export const nextFrame = (item: any) => {
     return {
@@ -22,4 +23,4 @@ export const setForegroundColor = (item: any) => {
     };
 };
 
-export default combineReducers({ matrixReducer });
+export default combineReducers({ backgroundReducer, matrixReducer });
