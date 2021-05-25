@@ -4,7 +4,6 @@ const initialStates = {
 }
 
 const backgroundReducer = (state = initialStates, action: any) => {
-    
 	switch (action.type) {
     	case "SET_BAKCGROUND_COLOR":
             return {

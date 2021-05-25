@@ -1,8 +1,8 @@
 import React from 'react';
-import styled,{keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { SketchPicker } from 'react-color';
 import { useSelector, useDispatch } from 'react-redux';
-import {setBackgroundColor, setForegroundColor} from '../../reducers/index';
+import { setBackgroundColor, setForegroundColor } from '../../reducers/index';
 
 const Background = styled.div`
     position: absolute;
@@ -45,7 +45,6 @@ export const Navigation = () => {
     let handleBackground = (color: any) => {
         dispatch(setBackgroundColor(color.hex));
     };
-    
 
     return (
         <Background>
@@ -69,7 +68,6 @@ export const Navigation = () => {
                         배경색 변경
                 </SetForegroundDesc>
             </SetColorArea>
-            
         </Background>
     );
 };

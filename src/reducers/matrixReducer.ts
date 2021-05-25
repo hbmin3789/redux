@@ -13,16 +13,16 @@ const newMatrixItem = (newItem: MatrixItem) => {
 }
 
 const getNextFrame = (matrixItems: MatrixItem[]) => {
-    matrixItems.forEach(x=>{
+    matrixItems.forEach(x => {
         //살아있는 문자라면
-        if(x.isActive){
+        if (x.isActive) {
             //Counter상태 확인하고
             
-            if(x.frame <= x.counter + 1){
+            if (x.frame <= x.counter + 1) {
                 //Y값을 증가시켜야 하면 증가시켜줌
                 x.y += 5;
                 //최대 거리까지 갔다면
-                if(x.y >= x.dist){
+                if(x.y >= x.dist) {
                     //죽임
                     x.isActive = false;                    
                 }
@@ -36,7 +36,7 @@ const getNextFrame = (matrixItems: MatrixItem[]) => {
         }
         //1/3확률(0,1,2)로 부활함. 숫자가 커질수록 부활할 확률 낮아짐
         
-        if(getRandom(20) === 0){           
+        if (getRandom(20) === 0) {           
             newMatrixItem(x);
         }        
     });    

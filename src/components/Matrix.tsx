@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import {nextFrame} from '../reducers/index';
+import { nextFrame } from '../reducers/index';
 import MatrixItem from '../libs/MatrixItem';
 
 const Canvas = styled.canvas`
@@ -21,11 +21,13 @@ export const Matrix = () => {
         return (state as any).backgroundReducer;
     });
 
-    if(matrixItems.length === 0){
+    if (matrixItems.length === 0) {
         for(let i = 0;i<100;i++) matrixItems.push(new MatrixItem());
     }
 
-    if(handle !== -10)
+    if (handle !== -10) {
+
+    }
         window.clearInterval(handle);
 
 
@@ -54,8 +56,6 @@ export const Matrix = () => {
                             
                             ctx.fillText(x.char, width, height);
                         }
-                        
-                        
                     }
                 }
             });
@@ -64,9 +64,7 @@ export const Matrix = () => {
     }, 20);
 
     return (
-        <Canvas ref={canvasRef}>
-
-        </Canvas>
+        <Canvas ref={canvasRef}/>
     );
 }
 
